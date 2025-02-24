@@ -1,10 +1,18 @@
-name: First_workflow
-on: workflow_dispatch
-jobs:
-  first_job:
-    runs-on: ubuntu-latest
+name: Test
+on:
+  push:
+    branches:
+      - main
+
+jobs: 
+  run_tests:
+    name: running tests
     steps:
-      - name: printing
-        run: |
-            echo "this is first script"
-            echo "this is second script"
+      - name: get_code
+        uses: actions/checkout
+      - name: cd
+        run: cd gha-demo
+      - name: dep_install
+        run: npm install
+      - name: run_tests
+        run: npm run test
