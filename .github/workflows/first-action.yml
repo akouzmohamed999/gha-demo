@@ -7,6 +7,7 @@ on:
 jobs: 
   run_tests:
     name: running tests
+    runs-on: ubuntu-latest
     steps:
       - name: get_code
         uses: actions/checkout@v3
