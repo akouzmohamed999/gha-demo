@@ -1,4 +1,4 @@
-name: Test
+name: CI
 on:
   push:
     branches:
@@ -12,6 +12,10 @@ jobs:
       - name: get_code
         uses: actions/checkout@v3
       - name: dep_install
-        run: npm install
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install_deps
+        run: npm ci
       - name: run_tests
         run: npm run test
